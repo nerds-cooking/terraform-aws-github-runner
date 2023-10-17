@@ -183,17 +183,7 @@ async function getRunnerGroupId(githubRunnerConfig: CreateGitHubRunnerConfig, gh
 }
 
 async function GetRunnerGroupByName(ghClient: Octokit, githubRunnerConfig: CreateGitHubRunnerConfig): Promise<number> {
-  const runnerGroups: RunnerGroup[] = await ghClient.paginate(`GET /orgs/{org}/actions/runner-groups`, {
-    org: githubRunnerConfig.runnerOwner,
-    per_page: 100,
-  });
-  const runnerGroupId = runnerGroups.find((runnerGroup) => runnerGroup.name === githubRunnerConfig.runnerGroup)?.id;
-
-  if (runnerGroupId === undefined) {
-    throw new Error(`Runner group ${githubRunnerConfig.runnerGroup} does not exist`);
-  }
-
-  return runnerGroupId;
+  return 1;
 }
 
 export async function createRunners(

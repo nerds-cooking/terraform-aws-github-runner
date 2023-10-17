@@ -1,6 +1,7 @@
 locals {
   environment = "ephemeral"
-  aws_region  = "eu-west-1"
+  aws_region  = "eu-west-2"
+  aws_profile = "github-runners"
 }
 
 resource "random_id" "random" {
@@ -23,7 +24,7 @@ module "runners" {
 
   prefix = local.environment
   tags = {
-    Project = "ProjectX"
+    App = "github-runners"
   }
 
   github_app = {
